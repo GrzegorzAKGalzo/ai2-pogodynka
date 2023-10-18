@@ -24,8 +24,8 @@ class ForecastRepository extends ServiceEntityRepository
     public function findByLocation(City $location)
     {
         $qb = $this->createQueryBuilder('m');
-        $qb->where('m.id = :id')
-            ->setParameter('id', $location)
+        $qb->where('m.city = :city')
+            ->setParameter('city', $location)
             ->andWhere('m.date > :now')
             ->setParameter('now', date('Y-m-d'));
 

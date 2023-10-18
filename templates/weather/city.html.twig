@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 {# @var location \App\Entity\City #}
-{# @var weather \App\Entity\Weather #}
+{# @var weather \App\Entity\Forecast #}
 
 
-{% block title %}Weather in { {location.name}}, {{ location.code}}{% endblock %}
+{% block title %}Weather in {{ location.name }}, {{ location.code}}{% endblock %}
 
 {% block body %}
 <style>

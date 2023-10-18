@@ -20,4 +20,15 @@ class WeatherController extends AbstractController
             'forecasts' => $forecasts,
         ]);
     }
+
+    #[Route('/weather/{name}', name: 'app_weather')]
+    public function cityName(City $city, ForecastRepository $forecastRepository): Response
+    {
+        $forecasts = $forecastRepository->findByLocation($city);
+
+        return $this->render('weather/city.html.twig', [
+            'location' => $city,
+            'forecasts' => $forecasts,
+        ]);
+    }
 }

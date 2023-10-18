@@ -28,7 +28,7 @@ class City
     #[ORM\Column(length: 2)]
     private ?string $code = null;
 
-    #[ORM\OneToMany(mappedBy: 'city', targetEntity: Forecast::class)]
+    #[ORM\OneToMany(mappedBy: 'City', targetEntity: Forecast::class)]
     private Collection $forecasts;
 
     public function __construct()

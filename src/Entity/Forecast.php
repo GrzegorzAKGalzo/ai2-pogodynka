@@ -31,7 +31,7 @@ class Forecast
 
     #[ORM\ManyToOne(inversedBy: 'forecasts')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?city $city = null;
+    private ?City $city = null;
 
     public function getId(): ?int
     {
@@ -105,7 +105,7 @@ class Forecast
         return $this;
     }
 
-    public function getCity(): ?city
+    public function getCity(): ?City
     {
         return $this->city;
     }
