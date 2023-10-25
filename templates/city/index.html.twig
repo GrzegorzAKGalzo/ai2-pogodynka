@@ -1,11 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Forecast index{% endblock %}
+{% block title %}City index{% endblock %}
 
 {% block body %}
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">   <h1>Forecasts List</h1></a>
+            <a class="navbar-brand" href="#">   <h1>Cities</h1></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
@@ -22,39 +22,39 @@
             </div>
         </div>
         </nav>
+ 
+
     <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Temperature</th>
-                <th>Rain</th>
-                <th>Humidity</th>
-                <th>Date</th>
-                <th>Wind</th>
+                <th>Name</th>
+                <th>Longitude</th>
+                <th>Latitude</th>
+                <th>Code</th>
                 <th>actions</th>
             </tr>
         </thead>
         <tbody>
-        {% for forecast in forecasts %}
+        {% for city in cities %}
             <tr>
-                <td>{{ forecast.id }}</td>
-                <td>{{ forecast.temperature }}</td>
-                <td>{{ forecast.rain }}</td>
-                <td>{{ forecast.humidity }}</td>
-                <td>{{ forecast.date ? forecast.date|date('Y-m-d') : '' }}</td>
-                <td>{{ forecast.wind }}</td>
+                <td>{{ city.id }}</td>
+                <td>{{ city.name }}</td>
+                <td>{{ city.longitude }}</td>
+                <td>{{ city.latitude }}</td>
+                <td>{{ city.code }}</td>
                 <td>
-                    <a href="{{ path('app_forecast_show', {'id': forecast.id}) }}">show</a>
-                    <a href="{{ path('app_forecast_edit', {'id': forecast.id}) }}">edit</a>
+                    <a href="{{ path('app_city_show', {'id': city.id}) }}">show</a>
+                    <a href="{{ path('app_city_edit', {'id': city.id}) }}">edit</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="7">no records found</td>
+                <td colspan="6">no records found</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('app_forecast_new') }}">Create new</a>
+    <a href="{{ path('app_city_new') }}">Create new</a>
 {% endblock %}

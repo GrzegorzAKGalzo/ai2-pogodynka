@@ -3,6 +3,8 @@
 namespace App\Form;
 
 use App\Entity\Forecast;
+use App\Entity\City;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -17,7 +19,9 @@ class ForecastType extends AbstractType
             ->add('humidity')
             ->add('date')
             ->add('wind')
-            ->add('city')
+            ->add('city', EntityType::class,[
+                'class' => City::class,
+            ])
         ;
     }
 
