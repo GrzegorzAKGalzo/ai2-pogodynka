@@ -30,7 +30,9 @@ class ForecastController extends AbstractController
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $forecast = new Forecast();
-        $form = $this->createForm(ForecastType::class, $forecast);
+        $form = $this->createForm(ForecastType::class, $forecast, [
+            'validation_groups' => 'new',
+        ]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -61,7 +63,9 @@ class ForecastController extends AbstractController
 
     public function edit(Request $request, Forecast $forecast, EntityManagerInterface $entityManager): Response
     {
-        $form = $this->createForm(ForecastType::class, $forecast);
+        $form = $this->createForm(ForecastType::class, $forecast,[
+            'validation_groups' => 'edit',
+        ]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

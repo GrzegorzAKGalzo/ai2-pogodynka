@@ -21,6 +21,7 @@ class ForecastType extends AbstractType
             ->add('wind')
             ->add('city', EntityType::class,[
                 'class' => City::class,
+                'choice_label' => 'name',
             ])
         ;
     }

@@ -110,7 +110,7 @@ class Forecast
         return $this->city;
     }
 
-    public function setCity(?city $city): static
+    public function setCity(?City $city): static
     {
         $this->city = $city;
 
