@@ -20,7 +20,7 @@
     </head>
           <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/weather">   <h1>My APP</h1></a>
+            <a class="navbar-brand" href="/weather/1"><h1>SkyCast</h1></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
@@ -37,13 +37,40 @@
             </div>
         </div>
         </nav>
- 
+    <style>
+        .heroSection{
+            color: white;
+            padding-top: 100px;
+            padding-bottom: 100px;
+        }
+        .heroSection h1{
+            padding-left: 20px;
+        }
+    </style>
+    
     <body>
+
+
+        {# <div class="container-fluid heroSection" style="background: url(https://images.unsplash.com/photo-1461468611824-46457c0e11fd?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)">
+            <div class="row  p-5 align-items-center">
+                <div class="col-6 ">
+                    <span>Your Forecast</span>
+                    <h1 class="display-1 font-weight-bold">SkyCast</h1>
+                    <span>Your Way</span>
+                </div>
+            </div>
+        </div> #}
+
+
+
+
+        <div class="container mt-5">
         {% block body %}{% endblock %}
         {% if is_granted('ROLE_USER') %}
-            <a href="{{ path('app_logout') }}">Logout</a>
+            <a href="{{ path('app_logout') }}" class="btn  btn-outline-secondary mt-5 float-end">Logout</a>
         {% else %}
-            <a href="{{ path('app_login') }}">Login</a>
+            <a href="{{ path('app_login') }}" >Login</a>
         {% endif %}
+        </div>
     </body>
 </html>

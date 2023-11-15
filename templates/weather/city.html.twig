@@ -11,13 +11,18 @@
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
 
-<main>
-    <h1>Weather in {{ location.name }}, {{ location.code }}</h1>
+<main class="container mt-5">
+    <h1 class="mb-4">Weather in {{ location.name }}, {{ location.code }}</h1>
 
-    <ul>
+    <ul class="list-group">
         {% for forecast in forecasts %}
-            <li>{{ forecast.date|date('d.m.Y') }}: {{ forecast.temperature }}&deg;C</li>
+            <li class="list-group-item">
+                {{ forecast.date|date('d.m.Y') }}: {{ forecast.temperature }}&deg;C
+            </li>
+        {% else %}
+            <li class="list-group-item">No forecasts available</li>
         {% endfor %}
     </ul>
 </main>
+
 {% endblock %}

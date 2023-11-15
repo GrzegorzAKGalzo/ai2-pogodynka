@@ -3,48 +3,47 @@
 {% block title %}Forecast index{% endblock %}
 
 {% block body %}
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Temperature</th>
-                <th>Rain</th>
-                <th>Humidity</th>
-                <th>Date</th>
-                <th>Wind</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Temperature</th>
+            <th scope="col">Rain</th>
+            <th scope="col">Humidity</th>
+            <th scope="col">Date</th>
+            <th scope="col">Wind</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
         {% for forecast in forecasts %}
-            <tr>
-                <td>{{ forecast.id }}</td>
-                <td>{{ forecast.temperature }}</td>
-                <td>{{ forecast.rain }}</td>
-                <td>{{ forecast.humidity }}</td>
-                <td>{{ forecast.date ? forecast.date|date('Y-m-d') : '' }}</td>
-                <td>{{ forecast.wind }}</td>
-                <td>
-                   
-                   
+        <tr>
+            <th scope="row">{{ forecast.id }}</th>
+            <td>{{ forecast.temperature }}</td>
+            <td>{{ forecast.rain }}</td>
+            <td>{{ forecast.humidity }}</td>
+            <td>{{ forecast.date ? forecast.date|date('Y-m-d') : '' }}</td>
+            <td>{{ forecast.wind }}</td>
+            <td>
                 {% if is_granted('ROLE_FORECAST_SHOW') %}
-                     <a href="{{ path('app_forecast_show', {'id': forecast.id}) }}">show</a>
+                <a href="{{ path('app_forecast_show', {'id': forecast.id}) }}" class="btn btn-primary btn-sm">Show</a>
                 {% endif %}
                 {% if is_granted('ROLE_FORECAST_EDIT') %}
-                     <a href="{{ path('app_forecast_edit', {'id': forecast.id}) }}">edit</a>
+                <a href="{{ path('app_forecast_edit', {'id': forecast.id}) }}" class="btn btn-warning btn-sm">Edit</a>
                 {% endif %}
-                </td>
-            </tr>
+            </td>
+        </tr>
         {% else %}
-            <tr>
-                <td colspan="7">no records found</td>
-            </tr>
+        <tr>
+            <td colspan="7">No records found</td>
+        </tr>
         {% endfor %}
-        </tbody>
-    </table>
+    </tbody>
+</table>
+
 
 
     {% if is_granted('ROLE_FORECAST_NEW') %}
-        <a href="{{ path('app_forecast_new') }}">Create new</a>
+        <a href="{{ path('app_forecast_new') }}" class="btn btn-success">Create new</a>
     {% endif %}
 {% endblock %}

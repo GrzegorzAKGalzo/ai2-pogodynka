@@ -13,15 +13,23 @@
     .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
-    <form action="{{ path('app_login') }}" method="post">
-    <label for="username">Username:</label>
+<form action="{{ path('app_login') }}" method="post" class="mb-3">
+    <div class="mb-3">
+        <label for="username" class="form-label">Username:</label>
+        <input type="text" id="username" name="_username" value="{{ last_username }}" class="form-control" />
+    </div>
 
-    <input type="text" id="username" name="_username" value="{{ last_username }}"/>
-    <label for="password">Password: </label>
-    <input type="password" id="password" name="_password"/>
-    {# If you want to control the URL the user is redirected to on success <input type="hidden" name="_target_path" value="/admin"/> #}
-    <button type="submit">login</button>
+    <div class="mb-3">
+        <label for="password" class="form-label">Password:</label>
+        <input type="password" id="password" name="_password" class="form-control" />
+    </div>
 
-    </form>
+    {# If you want to control the URL the user is redirected to on success
+    <input type="hidden" name="_target_path" value="/admin"/>
+    #}
+
+    <button type="submit" class="btn btn-success">Sign In</button>
+</form>
+
 
 {% endblock %}
