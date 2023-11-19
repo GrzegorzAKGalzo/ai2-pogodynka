@@ -1,0 +1,4 @@
+name,code,date,celsius, fahrenheit
+{% for forecast in forecasts %}
+{{ name }},{{ code }},{{ forecast.date | date('Y-m-d') }},{{ forecast.temperature }},{{ forecast.fahrenheit  }}
+{% endfor %}
